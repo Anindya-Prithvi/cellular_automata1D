@@ -10,12 +10,12 @@ new = []
 ##        current[random.randint(0,499)] = 1
 
 def rules(a,b,c,rule):
-	rule_bin = bin(rule)[2:]
-	padding = 8-len(rule_bin)
-	rule_bin = "0"*padding + rule_bin
-	situation = 7-int(str(a)+str(b)+str(c),2)
-	fate = bool(int(rule_bin[situation]))
-	return fate
+        rule_bin = bin(rule)[2:]
+        padding = 8-len(rule_bin)
+        rule_bin = "0"*padding + rule_bin
+        situation = 7-int(str(a)+str(b)+str(c),2)
+        fate = bool(int(rule_bin[situation]))
+        return fate
 
 def gen():
         global current,new,image
@@ -41,6 +41,6 @@ plt.axis("image")
 saveit = input("Would you like to save the figure? (Y/N): ")
 if (saveit == "Y"):
         fname = input("Enter filename: ")
-	plt.savefig("{}.png".format(fname),bbox_inches='tight')
-	
+        plt.savefig("{}.png".format(fname),bbox_inches='tight')
+        
 plt.show()
