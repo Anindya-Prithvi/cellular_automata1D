@@ -22,7 +22,6 @@ def gen():
         for i in range(500):
                 new.append(rules(current[i-1],current[i],current[(i+1)%500], rule)*1)
         current = new
-        println(current)
         new = []
         image.append(current)
 
@@ -33,5 +32,15 @@ for i in range(500):
 
 # for visualizing
 import matplotlib.pyplot as plt
+plt.figure(figsize=(10,10))
 plt.imshow(image)
+plt.axis("off")
+plt.axis("tight")
+plt.axis("image")
+
+saveit = input("Would you like to save the figure? (Y/N): ")
+if (saveit == "Y"):
+        fname = input("Enter filename: ")
+	plt.savefig("{}.png".format(fname),bbox_inches='tight')
+	
 plt.show()
