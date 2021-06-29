@@ -25,3 +25,7 @@ Note that the initial generation is taken to just have 1 live cell at the center
 ### How to play my code:
   - you can change the initial state by manually changing the variable `current` declared in the python file. By default it is set to 499 `zeros` and only one `1` at the center.
   - my code only thinks about the nearest neighbour (i.e. left and right), maybe you can care about cells which are the neighbour of the nearest neighbours. In that case there will be 2<sup>32</sup> rules possible, which is equivalent to 4294967296 rules and you can just choose any. Think about how many cool patterns (and other things) you can generate from it.
+\
+Here is an example of state 887847937
+\
+![image](https://user-images.githubusercontent.com/29653551/123845115-6cfbd380-d931-11eb-8d48-e012f8b66806.png)
