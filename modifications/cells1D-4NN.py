@@ -1,50 +1,62 @@
-import matplotlib.pyplot as plt
 import random
-#implementation of the cells1D algorithm but with neighbour of neighbour, this increases the states to 2<<31.
+
+import matplotlib.pyplot as plt
+
+# implementation of the cells1D algorithm but with neighbour of neighbour, this increases the states to 2<<31.
 while True:
-        image = []
-        current = [0 for i in range(500)]
-        current[500//2]=1
-        image.append(current)
-        new = []
+    image = []
+    current = [0 for i in range(500)]
+    current[500 // 2] = 1
+    image.append(current)
+    new = []
 
-        # Code for random initial state
-        ##import random
-        ##for i in range(10):
-        ##        current[random.randint(0,499)] = 1
+    # Code for random initial state
+    ##import random
+    # for i in range(10):
+    ##        current[random.randint(0,499)] = 1
 
-        def rules(a,b,c,d,e,rule):
-                rule_bin = bin(rule)[2:]
-                padding = 32-len(rule_bin)
-                rule_bin = "0"*padding + rule_bin
-                situation = 31-int(str(a)+str(b)+str(c)+str(d)+str(e),2)
-                fate = bool(int(rule_bin[situation]))
-                return fate
+    def rules(a, b, c, d, e, rule):
+        rule_bin = bin(rule)[2:]
+        padding = 32 - len(rule_bin)
+        rule_bin = "0" * padding + rule_bin
+        situation = 31 - int(str(a) + str(b) + str(c) + str(d) + str(e), 2)
+        fate = bool(int(rule_bin[situation]))
+        return fate
 
-        def gen():
-                global current,new,image
-                for i in range(500):
-                        new.append(rules(current[i-2],current[i-1],current[i],current[(i+1)%500], current[(i+2)%500], rule)*1)
-                current = new
-                new = []
-                image.append(current)
-
-        #rule = int(input("Enter rule: "))
-        rule = random.randint(1,4294967294)
-
+    def gen():
+        global current, new, image
         for i in range(500):
-                gen()
+            new.append(
+                rules(
+                    current[i - 2],
+                    current[i - 1],
+                    current[i],
+                    current[(i + 1) % 500],
+                    current[(i + 2) % 500],
+                    rule,
+                )
+                * 1
+            )
+        current = new
+        new = []
+        image.append(current)
 
-        # for visualizing
-        plt.figure(figsize=(10,10))
-        plt.imshow(image)
-        plt.axis("off")
-        plt.axis("tight")
-        plt.axis("image")
+    # rule = int(input("Enter rule: "))
+    rule = random.randint(1, 4294967294)
 
-##        saveit = input("Would you like to save the figure? (Y/N): ")
-##        if (saveit == "Y"):
-##                fname = input("Enter filename: ")
-##                plt.savefig("{}.png".format(fname),bbox_inches='tight')
-                
-        plt.show()
+    for i in range(500):
+        gen()
+
+    # for visualizing
+    plt.figure(figsize=(10, 10))
+    plt.imshow(image)
+    plt.axis("off")
+    plt.axis("tight")
+    plt.axis("image")
+
+    ##        saveit = input("Would you like to save the figure? (Y/N): ")
+    # if (saveit == "Y"):
+    ##                fname = input("Enter filename: ")
+    # plt.savefig("{}.png".format(fname),bbox_inches='tight')
+
+    plt.show()
