@@ -39,7 +39,7 @@ plt.axis("tight")
 plt.axis("image")
 
 saveit = input("Would you like to save the figure? (Y/N): ")
-if (saveit == "Y"):
+if saveit == "Y":
         fname = input("Enter filename: ")
         plt.savefig("{}.png".format(fname),bbox_inches='tight')
         
